@@ -1,7 +1,7 @@
-import FormSimple from "./components/FormSimple";
-import FormComplicated from "./components/FormComplicated";
+import FormSimple from "./views/FormSimple";
+import FormComplicated from "./views/FormComplicated";
 import "./App.css";
-import Hive from "./components/Hive";
+import Hive from "./views/Hive";
 
 function App() {
   return (
