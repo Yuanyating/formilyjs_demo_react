@@ -3,6 +3,7 @@ import { createSchemaField } from "@formily/react";
 import { Form, FormButtonGroup, FormItem, Input, Submit } from "@formily/antd";
 import { useEffect } from "react";
 import SelectRemote from "../components/SelectRemote";
+import { Typography } from "antd";
 
 /**
  * 实现一个可联动的Hive
@@ -106,11 +107,18 @@ export default () => {
   }, []);
 
   return (
+    <>
+    <section style={{ background: '#eee', width: '100%', padding: '0 24px'}}>
+      <Typography.Title level={3}>场景描述</Typography.Title>
+      <Typography.Paragraph>
+        select下拉选项是从接口获取的，并且第二个下拉项请求接口时需要传递第一个下拉项的值作为参数
+      </Typography.Paragraph>
+    </section>
     <Form
       form={form}
-      labelCol={10}
+      labelCol={4}
       wrapperCol={16}
-      style={{ width: 500 }}
+      style={{ width: 500, marginTop: 48 }}
       onAutoSubmit={console.log}
     >
       <SchemaField schema={schema} />
@@ -120,5 +128,6 @@ export default () => {
         </Submit>
       </FormButtonGroup.FormItem>
     </Form>
+    </>
   );
 };
