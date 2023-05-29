@@ -3,6 +3,7 @@ import Hive from "./views/Hive";
 import Upload from "./views/Upload";
 import { createBrowserRouter, Navigate, RouterProvider} from 'react-router-dom';
 import LayoutWrapper from "./layouts";
+import Table from "./views/Table";
 
 
 const router = createBrowserRouter([
@@ -20,6 +21,10 @@ const router = createBrowserRouter([
       {
         path: '/Upload',
         element: <Upload />
+      },
+      {
+        path: '/table',
+        element: <Table />
       }
     ]
   }
