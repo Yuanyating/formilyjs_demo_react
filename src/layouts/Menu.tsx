@@ -29,8 +29,16 @@ const items: MenuProps["items"] = [
     key: "upload",
   },
   {
-    label: "EP3:表格",
+    label: "EP3:复杂联动",
+    key: "/linkage",
+  },
+  {
+    label: "EP4: 表格",
     key: "/table",
+  },
+  {
+    label: "EP5: 任务配置",
+    key: "/task",
   },
 ];
 

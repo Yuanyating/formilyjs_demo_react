@@ -1,31 +1,29 @@
-import { createForm } from '@formily/core'
-import { createSchemaField } from '@formily/react'
-import { Form, FormButtonGroup, FormItem, Input, Submit } from '@formily/antd'
-import { Typography } from 'antd'
+import { createForm } from "@formily/core";
+import { createSchemaField } from "@formily/react";
+import { Form, FormButtonGroup, FormItem, Input, Submit } from "@formily/antd";
+import Header from "../layouts/Header";
+import Footer from "../layouts/Footer";
 
 const form = createForm({
   validateFirst: true,
   effects: (form) => {
-    console.log('form', form)
+    console.log("form", form);
   },
-})
+});
 
 const SchemaField = createSchemaField({
   components: {
     FormItem,
     Input,
   },
-})
+});
 
-const schema = {}
+const schema = {};
 
 export default () => {
   return (
     <>
-      <section style={{ background: '#eee', width: '100%', padding: '0 24px' }}>
-        <Typography.Title level={3}>场景描述</Typography.Title>
-        <Typography.Paragraph>上传文件到远端接口</Typography.Paragraph>
-      </section>
+      <Header title="场景描述" paragraph="上传文件到远端接口" />
       <Form
         form={form}
         labelCol={4}
@@ -39,7 +37,8 @@ export default () => {
             提交
           </Submit>
         </FormButtonGroup.FormItem>
+        <Footer />
       </Form>
     </>
-  )
-}
+  );
+};
