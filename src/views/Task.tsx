@@ -4,6 +4,7 @@ import {
   Form,
   FormButtonGroup,
   FormItem,
+  FormGrid,
   Input,
   Select,
   ArrayTable,
@@ -35,76 +36,110 @@ const SchemaField = createSchemaField({
     Radio,
     Editable,
     FormCollapse,
+    FormGrid
   },
   scope: {},
 });
 
 const schema = {
   type: "object",
-  layout: {
-    type: "void",
-    "x-component": "FormLayout",
-    "x-component-props": {
-      labelCol: 6,
-      wrapperCol: 10,
-      layout: "vertical",
-    },
-  },
+  
   properties: {
-    run: {
+    collapse1: {
       type: "void",
       "x-component": "FormCollapse",
       "x-component-props": {
         accordion: false,
         ghost: false,
+        title: "运行任务"
       },
-      name: "run",
-      "x-designable-id": "3j570ckuxdx",
+      name: "collapse1",
+      "x-designable-id": "3d1nogobgnd",
+      "x-index": 0,
       properties: {
         run: {
-          type: "void",
+          type: "object",
           "x-component": "FormCollapse.CollapsePanel",
           "x-component-props": {
             header: "运行规则",
           },
           "x-designable-id": "5xhkyxbenq8",
           properties: {
-            periodicType: {
-              type: "string | number",
-              title: "调度方式",
-              "x-decorator": "FormItem",
-              "x-component": "Radio.Group",
-              enum: [
-                {
-                  label: "周期调度",
-                  value: "cycle",
-                },
-                {
-                  label: "只运行一次",
-                  value: "temp",
-                },
-              ],
-              default: "cycle",
-              "x-validator": [],
-              "x-component-props": {},
-              "x-decorator-props": {},
-              "x-designable-id": "8vfyvvb3t7a",
+            grid: {
+              type: "void",
+              "x-component": "FormGrid",
+              "x-component-props": {
+                minColumns: 2,
+                maxColumns: 2
+              },
+              "x-designable-id": "3j570ckuxdx",
               "x-index": 0,
+              properties: {
+                periodicType: {
+                  type: "string | number",
+                  title: "调度方式",
+                  "x-decorator": "FormItem",
+                  "x-component": "Radio.Group",
+                  enum: [
+                    {
+                      label: "周期调度",
+                      value: "cycle",
+                    },
+                    {
+                      label: "只运行一次",
+                      value: "temp",
+                    },
+                  ],
+                  default: "cycle",
+                  required: true,
+                  "x-validator": [],
+                  "x-component-props": {},
+                  "x-decorator-props": {
+                  
+                  },
+                  "x-designable-id": "8vfyvvb3t7a",
+                  "x-index": 0,
+                },
+                maxRunTime: {
+                  type: "number",
+                  title: "执行超时时长（分）",
+                  "x-decorator": "FormItem",
+                  "x-component": "NumberPicker",
+                  "x-validator": [],
+                  "x-component-props": {
+                    min: 0,
+                    max: 3600
+                  },
+                  "x-decorator-props": {
+                  
+                  },
+                  default: 1440,
+                  required: true,
+                  "x-index": 1,
+                },
+                cycleType: {
+                  type: "string",
+                  title: "周期类型"
+                }
+              }
             },
           },
           name: "run",
           "x-index": 0,
         },
       },
-      "x-index": 0,
-    },
+      
+    }
+    
   },
+  
+  "x-index": 0,
 };
 
 export default () => {
   return (
     <>
-      <Header title="场景描述" paragraph="表格相关的展示" />
+      <Header title="场景描述" paragraph="折叠面板，复刻任务面板，使用FormGrid布局" />
 
       <Form
         form={form}
