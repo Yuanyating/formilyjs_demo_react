@@ -15,6 +15,7 @@ import {
 } from "@formily/antd";
 import Header from "../layouts/Header";
 import Footer from "../layouts/Footer";
+import SubmitButton from "../components/common/SubmitButton";
 
 const form = createForm({
   validateFirst: true,
@@ -44,8 +45,8 @@ const schema = {
     //表格
     projects: {
       type: "array",
-      title: "Projects",
-
+      title: "",
+      default: [],
       "x-decorator": "FormItem",
       "x-component": "ArrayTable",
       "x-component-props": {
@@ -70,7 +71,7 @@ const schema = {
             "x-component": "ArrayTable.Column",
             "x-component-props": {
               width: 50,
-              title: "Sort",
+              title: "排序",
               align: "center",
             },
             properties: {
@@ -85,7 +86,7 @@ const schema = {
             "x-component": "ArrayTable.Column",
             "x-component-props": {
               width: 80,
-              title: "Index",
+              title: "序号",
               align: "center",
             },
             properties: {
@@ -157,7 +158,7 @@ const schema = {
             type: "void",
             "x-component": "ArrayTable.Column",
             "x-component-props": {
-              title: "Operations",
+              title: "操作",
               fixed: "right",
             },
             properties: {
@@ -190,6 +191,8 @@ const schema = {
           "x-component": "ArrayTable.Addition",
         },
       },
+      // "x-display": "visible",
+      // "x-visible": false,
     },
   },
 };
@@ -197,23 +200,21 @@ const schema = {
 export default () => {
   return (
     <>
-      <Header title="场景描述" paragraph="表格相关的展示" />
+      <Header
+        paragraph1="支持排序和新增的表格"
+        paragraph2="ArrayTable"
+        paragraph3="数据流Select算子"
+      />
 
       <Form
         form={form}
-        labelCol={6}
-        wrapperCol={12}
         labelWrap={true}
         labelWidth="auto"
         style={{ width: 800 }}
         onAutoSubmit={console.log}
       >
         <SchemaField schema={schema} />
-        <FormButtonGroup.FormItem>
-          <Submit block size="large">
-            提交
-          </Submit>
-        </FormButtonGroup.FormItem>
+        <SubmitButton />
         <Footer />
       </Form>
     </>

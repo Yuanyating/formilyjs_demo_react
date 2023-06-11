@@ -5,6 +5,7 @@ import { useEffect } from "react";
 import SelectRemote from "../components/SelectRemote";
 import Header from "../layouts/Header";
 import Footer from "../layouts/Footer";
+import SubmitButton from "../components/common/SubmitButton";
 
 /**
  * 实现一个可联动的Hive
@@ -56,15 +57,15 @@ const schema = {
       "x-designable-id": "fg3pfwbxge0",
       "x-index": 0,
       //联动的几种情况（改变值、显隐、详情见IGeneralFieldState）
-      "x-reactions": {
-        target: "table",
-        fulfill: {
-          state: {
-            value: "",
-            visible: "{{$self.value !== 'app'}}",
-          },
-        },
-      },
+      // "x-reactions": {
+      //   target: "table",
+      //   fulfill: {
+      //     state: {
+      //       value: "",
+      //       visible: "{{$self.value !== 'app'}}",
+      //     },
+      //   },
+      // },
       name: "db",
     },
     table: {
@@ -104,14 +105,15 @@ const schema = {
 
 export default () => {
   useEffect(() => {
-    form.setInitialValues({ db: "abc" });
+    // form.setInitialValues({ db: "abc" });
   }, []);
 
   return (
     <>
       <Header
-        title="场景描述"
-        paragraph="select下拉选项是从接口获取的，并且第二个下拉项请求接口时需要传递第一个下拉项的值作为参数"
+        paragraph1="select下拉选项是从接口获取的，并且第二个获取下拉请求接口时依赖第一个下拉项的值作为参数"
+        paragraph2="formily自定义组件"
+        paragraph3="数据流Hive算子库表联动"
       />
       <Form
         form={form}
@@ -121,11 +123,7 @@ export default () => {
         onAutoSubmit={console.log}
       >
         <SchemaField schema={schema} />
-        <FormButtonGroup.FormItem>
-          <Submit block size="large">
-            提交
-          </Submit>
-        </FormButtonGroup.FormItem>
+        <SubmitButton />
         <Footer />
       </Form>
     </>

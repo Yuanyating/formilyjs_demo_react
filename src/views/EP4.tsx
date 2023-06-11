@@ -13,9 +13,10 @@ import {
   Submit,
   Editable,
 } from "@formily/antd";
-import { Space, Typography } from "antd";
+import { Space } from "antd";
 import Header from "../layouts/Header";
 import Footer from "../layouts/Footer";
+import SubmitButton from "../components/common/SubmitButton";
 
 const form1 = createForm({
   validateFirst: true,
@@ -443,14 +444,15 @@ export default () => {
   return (
     <>
       <Header
-        title="场景描述"
-        paragraph="类似于JDQ表单，主要涉及复杂的联动。左侧是UI隐藏保留值的场景，右侧是UI隐藏不保留值的场景。"
+        paragraph1="针对不同的业务场景，左侧表单是UI隐藏保留值的场景，右侧表单是UI隐藏不保留值的场景。"
+        paragraph2="涉及schema属性visible和hidden的区别"
+        paragraph3="数据流JDQ算子"
       />
       <Space size={200} align="start">
         <Form
           form={form1}
-          labelCol={6}
-          wrapperCol={12}
+          // labelCol={6}
+          // wrapperCol={12}
           labelWrap={true}
           labelWidth="auto"
           style={{ width: 500 }}
@@ -466,19 +468,16 @@ export default () => {
         </Form>
         <Form
           form={form2}
-          labelCol={6}
-          wrapperCol={12}
+          // labelCol={6}
+          // wrapperCol={12}
           labelWrap={true}
           labelWidth="auto"
           style={{ width: 500 }}
           onAutoSubmit={console.log}
         >
           <SchemaField schema={schema2} />
-          <FormButtonGroup.FormItem>
-            <Submit block size="large">
-              提交
-            </Submit>
-          </FormButtonGroup.FormItem>
+          <SubmitButton />
+
           <Footer />
         </Form>
       </Space>
