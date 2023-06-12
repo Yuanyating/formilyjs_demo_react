@@ -52,8 +52,12 @@ const items: MenuProps["items"] = [
     key: "ep6",
   },
   {
-    label: "EP7: 数据流任务配置",
+    label: "EP7: 校验",
     key: "ep7",
+  },
+  {
+    label: "EP8: 数据流任务配置",
+    key: "ep8",
   },
 ];
 

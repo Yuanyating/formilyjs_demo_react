@@ -14,3 +14,13 @@ export const getSelectRemoteOptions = ({url, method, ...rest }: TSelectRemotePar
     data: rest
   })
 }
+
+//校验表名是否唯一
+export const validateTableName = (params: {tableName: string}) => {
+  return request({
+    url: '/uniqueValidate',
+    credentials: 'include',
+    method: 'GET',
+    params,
+  })
+}

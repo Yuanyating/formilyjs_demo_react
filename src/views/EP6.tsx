@@ -1,13 +1,11 @@
-import React from "react";
 import { createForm } from "@formily/core";
 import { createSchemaField } from "@formily/react";
 import {
   DatePicker,
   Input,
   Radio,
-  FormButtonGroup,
-  Submit,
   Form,
+  FormItem
 } from "@formily/antd";
 import Header from "../layouts/Header";
 import Footer from "../layouts/Footer";
@@ -20,6 +18,7 @@ const SchemaField = createSchemaField({
     Input,
     Radio,
     DatePicker,
+    FormItem
   },
   // scope:
 });
@@ -27,22 +26,6 @@ const SchemaField = createSchemaField({
 const schema = {
   type: "object",
   properties: {
-    // admin: {
-    //   type: "boolean",
-    //   "x-decorator": "FormItem",
-    //   "x-component": "Radio.Group",
-    //   enum: [
-    //     {
-    //       value: true,
-    //       label: "是",
-    //     },
-    //     {
-    //       value: false,
-    //       label: "否",
-    //     },
-    //   ],
-    //   default: true,
-    // },
     "[startDate,endDate]": {
       type: "string",
       title: "解构后",
@@ -61,7 +44,7 @@ const schema = {
 export default () => {
   return (
     <>
-      <Header paragraph1="当前后端数据格式无法达成一致时，可通过兼容方案处理。Formily提供解构路径的能力" />
+      <Header paragraph1={`当前后端数据格式无法达成一致时，可通过兼容方案处理。Formily提供解构路径的能力，RangePicker组件本身返回的是一个数组，通过formily可直接拆成两个key传给后端`} />
       <Form
         form={form}
         // labelCol={6}

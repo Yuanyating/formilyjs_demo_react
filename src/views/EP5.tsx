@@ -1,12 +1,9 @@
-import { createForm, GeneralField } from "@formily/core";
-import { Field, FormProvider, createSchemaField, Schema } from "@formily/react";
+import { createForm } from "@formily/core";
+import { Field, createSchemaField } from "@formily/react";
 import {
-  FormItem,
-  FormLayout,
   Form,
+  FormItem,
   Input,
-  FormButtonGroup,
-  Submit,
   Select,
   NumberPicker,
   DatePicker,
@@ -23,6 +20,7 @@ const SchemaField = createSchemaField({
     Select,
     NumberPicker,
     DatePicker,
+    // FormItem
   },
   scope: {
     disabledFuture: () => {},
@@ -52,6 +50,7 @@ const addonSchema = {
   properties: {
     addon: {
       type: "string",
+      
       "x-component": "Select",
       "x-decorator": "FormItem",
       "x-component-props": {},
@@ -75,8 +74,17 @@ const schema = {
   properties: {
     time: {
       type: "number",
+      title: '时间',
       "x-component": "NumberPicker",
       "x-decorator": "FormItem",
+      "x-reactions": {
+        dependencies: [".addon"],
+        fulfill: {
+          state: {
+            value: ""
+          }
+        }
+      },
       "x-component-props": {
         style: {
           width: "100%",
@@ -90,15 +98,15 @@ const schema = {
               {
                 options: [
                   {
-                    label: "$",
-                    value: "USD",
+                    label: "秒",
+                    value: "s",
                   },
                   {
-                    label: "€",
-                    value: "EUR",
+                    label: "毫秒",
+                    value: "ms",
                   },
                 ],
-                default: "USD",
+                default: "s",
                 style: {
                   width: "70px",
                 },
@@ -106,9 +114,11 @@ const schema = {
             ]}
             decorator={["FormItem"]}
             basePath={""}
+            
           />
         ),
       },
+      
     },
     // time: {
     //   type: "string",
@@ -126,7 +136,7 @@ const schema = {
 export default () => {
   return (
     <>
-      <Header paragraph1="多个表单项组合的UI展示" />
+      <Header paragraph1="多个表单项组合的UI展示" paragraph2="设置表单项的basePath使数字和单位同一层级" paragraph3="存在单位的表单项" />
 
       <Form
         form={form}
