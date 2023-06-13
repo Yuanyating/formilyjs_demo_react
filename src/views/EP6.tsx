@@ -44,7 +44,7 @@ const schema = {
 export default () => {
   return (
     <>
-      <Header paragraph1={`当前后端数据格式无法达成一致时，可通过兼容方案处理。Formily提供解构路径的能力，RangePicker组件本身返回的是一个数组，通过formily可直接拆成两个key传给后端`} />
+      <Header paragraph1={`当前后端数据格式无法达成一致时，可通过兼容方案处理。Formily提供解构路径的能力，RangePicker组件本身返回的是一个数组，通过formily可直接拆成两个key传给后端`} paragraph2="formily解构路径" paragraph3="前后端交互" />
       <Form
         form={form}
         // labelCol={6}

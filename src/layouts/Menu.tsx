@@ -1,4 +1,4 @@
-import { Menu, MenuProps } from "antd";
+import { Menu, MenuProps, Space } from "antd";
 import { useLocation, useNavigate } from "react-router-dom";
 
 type MenuItem = Required<MenuProps>["items"][number];
@@ -59,6 +59,10 @@ const items: MenuProps["items"] = [
     label: "EP8: 数据流任务配置",
     key: "ep8",
   },
+  {
+    label: "xrender vs formily",
+    key: "vs"
+  }
 ];
 
 export default () => {
@@ -67,6 +71,8 @@ export default () => {
   const selectedKey = location.pathname.split("/")[1] || "hive";
 
   return (
+    // <Space direction="vertical" style={{ width: '100%'}}>
+    // <div style={{ height: 30 }}>icons</div>
     <Menu
       mode="inline"
       onClick={({ key }) => {
@@ -77,5 +83,6 @@ export default () => {
       defaultSelectedKeys={["hive"]}
       selectedKeys={[selectedKey]}
     />
+    // </Space>
   );
 };

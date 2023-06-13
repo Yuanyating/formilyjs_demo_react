@@ -23,27 +23,8 @@ const SchemaField = createSchemaField({
     // FormItem
   },
   scope: {
-    disabledFuture: () => {},
   },
 });
-
-// const FieldContext = createContext<GeneralField | null>(null);
-
-// const selectAfter = (
-//   <Select defaultValue="USD" style={{ width: 60 }}>
-//     <Option value="USD">$</Option>
-//     <Option value="EUR">€</Option>
-//     <Option value="GBP">£</Option>
-//     <Option value="CNY">¥</Option>
-//   </Select>
-// );
-
-// const AddonField = createSchemaField({
-//   components: {
-//     Select,
-//   },
-//   basePath: "",
-// });
 
 const addonSchema = {
   type: "object",
@@ -81,7 +62,7 @@ const schema = {
         dependencies: [".addon"],
         fulfill: {
           state: {
-            value: ""
+            value: null
           }
         }
       },
@@ -120,16 +101,6 @@ const schema = {
       },
       
     },
-    // time: {
-    //   type: "string",
-    //   "x-component": "DatePicker",
-    //   "x-decorator": "FormItem",
-    //   "x-component-props": {
-    //     format: "YYYY-MM-DD HH:mm:ss",
-    //     showTime: true,
-    //     disabledDate: (current: any) => current && current > new Date(),
-    //   },
-    // },
   },
 };
 
@@ -140,16 +111,12 @@ export default () => {
 
       <Form
         form={form}
-        // labelCol={6}
-        // wrapperCol={12}
-        labelWrap={true}
-        labelWidth="auto"
+        initialValues={{ time: 1, addon: 's'}}
         style={{ width: 800 }}
         onAutoSubmit={console.log}
       >
         <SchemaField schema={schema} />
         <SubmitButton />
-
         <Footer />
       </Form>
     </>

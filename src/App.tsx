@@ -46,7 +46,7 @@ const routers = Object.keys(metaRouters).reduce((acc, cur) => {
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Navigate to="/hive" />,
+    element: <Navigate to="/ep1" />,
   },
   {
     element: <LayoutWrapper />,

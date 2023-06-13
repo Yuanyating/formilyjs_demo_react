@@ -106,7 +106,6 @@ export default () => {
       >
         <SchemaField schema={schema} />
         <SubmitButton />
-
         <Footer />
       </Form>
     </>

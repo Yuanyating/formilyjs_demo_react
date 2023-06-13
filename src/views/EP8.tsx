@@ -20,6 +20,7 @@ import {
 } from "@formily/antd";
 import Header from "../layouts/Header";
 import Footer from "../layouts/Footer";
+import SubmitButton from "../components/common/SubmitButton";
 
 const form = createForm({
   validateFirst: true,
@@ -450,11 +451,7 @@ export default () => {
         onAutoSubmit={console.log}
       >
         <SchemaField schema={schema} />
-        <FormButtonGroup.FormItem>
-          <Submit block size="large">
-            提交
-          </Submit>
-        </FormButtonGroup.FormItem>
+        <SubmitButton />
         <Footer />
       </Form>
     </>
