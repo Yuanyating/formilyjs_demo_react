@@ -1,4 +1,4 @@
-import { createForm } from "@formily/core";
+import { createForm, onFormInit, onFormMount } from "@formily/core";
 import { createSchemaField } from "@formily/react";
 import { Form, FormButtonGroup, FormItem, Input, Submit } from "@formily/antd";
 import { useEffect } from "react";
@@ -6,6 +6,7 @@ import SelectRemote from "../components/SelectRemote";
 import Header from "../layouts/Header";
 import Footer from "../layouts/Footer";
 import SubmitButton from "../components/common/SubmitButton";
+import { getSelectRemoteOptions, validateTableName } from "../service/index";
 
 /**
  * 实现一个可联动的Hive
@@ -15,6 +16,12 @@ const form = createForm({
   validateFirst: true,
   effects: (form) => {
     console.log("form", form);
+    onFormInit(() => {
+      console.log("111");
+    });
+    onFormMount(() => {
+      console.log("222");
+    });
   },
 });
 
@@ -57,15 +64,15 @@ const schema = {
       "x-designable-id": "fg3pfwbxge0",
       "x-index": 0,
       //联动的几种情况（改变值、显隐、详情见IGeneralFieldState）
-      // "x-reactions": {
-      //   target: "table",
-      //   fulfill: {
-      //     state: {
-      //       value: "",
-      //       visible: "{{$self.value !== 'app'}}",
-      //     },
-      //   },
-      // },
+      "x-reactions": {
+        target: "table",
+        fulfill: {
+          state: {
+            // value: "",
+            // visible: "{{$self.value !== 'app'}}",
+          },
+        },
+      },
       name: "db",
     },
     table: {
@@ -120,7 +127,13 @@ export default () => {
         labelCol={4}
         wrapperCol={16}
         style={{ width: 500, marginTop: 48 }}
-        onAutoSubmit={console.log}
+        onAutoSubmit={async () => {
+          try {
+            await validateTableName({ tableName: "" });
+          } catch (err) {
+            console.log(111);
+          }
+        }}
       >
         <SchemaField schema={schema} />
         <SubmitButton />

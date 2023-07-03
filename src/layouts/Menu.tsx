@@ -32,15 +32,16 @@ const items: MenuProps["items"] = [
     key: "ep1",
   },
   {
-    label: "EP2: 可拖拽表格",
+    label: "EP2: UI隐藏",
     key: "ep2",
   },
+
   {
     label: "EP3: 可选择表格",
     key: "ep3",
   },
   {
-    label: "EP4: UI隐藏",
+    label: "EP4: 可拖拽表格",
     key: "ep4",
   },
   {
@@ -61,8 +62,8 @@ const items: MenuProps["items"] = [
   },
   {
     label: "xrender vs formily",
-    key: "vs"
-  }
+    key: "vs",
+  },
 ];
 
 export default () => {
